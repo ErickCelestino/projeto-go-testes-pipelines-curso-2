@@ -33,7 +33,7 @@ jobs:
       
   
   build:
-    needs: ${{ matrix.os }}
+    needs: test
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
