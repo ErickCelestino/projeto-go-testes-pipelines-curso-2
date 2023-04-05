@@ -77,9 +77,41 @@ ENV USER=root PASSWORD=root DBNAME=root
 
 ## Referenciando outros arquivos
 - Para trabalhar com diversas rotinas é necessário separar elas em arquivdos diferentes e refenciar esses arquivos no final de cada arquivo lido.
+- Para passar os segredos de um arquivo yaml para o outro é necessário utilizar screts
 ```yaml
   docker:
     needs: build
     uses: ./.github/workflows/Docker.yml
+    secrets: inherit
+```
+---
+## Criando um workflow Docker que conecta no docker hub
+- Para fazer login no docker hub é necessário criar um conta e passar o usuario e a senha.
+- É uma boa pratica de segurança criar um secret passando sua senha ou token do docker hub para não mostrar aos outros usuários suas informações pessoais.
+
+```docker
+name: Docker
+
+on:
+  workflow_call:
+  
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: setup Docker Build
+      uses: docker/setup-buildx-action@v2.5.0
+    
+    - name: Docker Login
+    # You may pin to the exact commit or the version.
+    # uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      uses: docker/login-action@v2.1.0
+      with:
+    # Username used to log against the Docker registry
+        username: purapreguica
+    # Password or personal access token used to log against the Docker registry
+        password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
 ```
