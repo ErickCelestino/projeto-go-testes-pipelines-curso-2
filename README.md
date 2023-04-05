@@ -18,3 +18,17 @@ on:
     pull_request:
         branches: [ '*' ]
 ```
+- É sempre importante lembrar que o software pode ser criado para rodar em qualquer sistema operacional(SO), então não é uma boa prática colocar ele para rodar em apenas um.
+```yaml
+  test:
+    runs-on: ubuntu-latest
+```
+- Podemos utilizar o sistema de matriz  para conseguirmos utilizar em vários so ou em várias versões de um mesmo so.
+```yaml
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        go_version: ['1.18', '1.17', '>=1.18']
+        os: ['ubuntu-latest', 'ubuntu-18.04']
+```
