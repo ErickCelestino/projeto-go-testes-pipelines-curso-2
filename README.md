@@ -64,3 +64,14 @@ ENV HOST=localhost PORT=5432
 
 ENV USER=root PASSWORD=root DBNAME=root
 ```
+
+## Declarando variáveis de ambiente no workflow 
+- é necessário para podermos utilizar as variaveis no sistema automatizado 
+```yaml
+ env:
+      HOST: localhost
+      PORT: 5432
+      USER: root
+      PASSWORD: root
+      DBNAME: 
+```
