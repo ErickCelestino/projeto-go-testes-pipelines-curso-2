@@ -1,4 +1,4 @@
-# Curso sobre CI / CD
+# Curso sobre CI
 
 ## Mudanças feitas e porque
 - O código no momento diz que apenas a uma branche pode ser modificada, o que não é tão usual no dia a dia de trabalho.
