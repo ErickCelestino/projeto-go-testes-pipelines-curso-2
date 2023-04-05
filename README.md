@@ -32,3 +32,35 @@ on:
         go_version: ['1.18', '1.17', '>=1.18']
         os: ['ubuntu-latest', 'ubuntu-18.04']
 ```
+---
+## Criando um Dockerfile
+- Para criar um arquivo docker precisamos nos atentar para alguns pontos;
+- 1 - Qual imagem queremos utilizar;
+- 2 - Qual porta ele será exposto;
+- 3 - Qual diretorio padrão ele irá criar;
+- 4 - O que será copiado para o container;
+- 5 - O comando que será executado depois que criar tudo.
+```docker
+FROM ubuntu:latest
+
+EXPOSE 8000
+
+WORKDIR /app
+
+COPY ./main main
+
+CMD [ "./main" ]
+```
+---
+## Utilizando variáveis de ambientes no GO
+- 1 - Importar a biblioteca os
+- 2 - Dentro da função utiizar o comando "os.Getenv()" e especificar o que você gostária de pegar no arquivo .env ou similar.
+
+---
+## Declarando variáveis de ambiente no dockerfile
+- Declare a função ENV e passe as variáveis que você criou, interessante separar o que é variável do banco e o que é do usuário.
+```docker
+ENV HOST=localhost PORT=5432
+
+ENV USER=root PASSWORD=root DBNAME=root
+```
