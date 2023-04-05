@@ -66,9 +66,20 @@ ENV USER=root PASSWORD=root DBNAME=root
 ```
 
 ## Declarando variáveis de ambiente no workflow 
+- Para que seja possível utilizar variaveis de ambiente automatizadas é necessário criar elas no arquivo .yml.
+```yaml
       HOST: localhost
       PORT: 5432
       USER: root
       PASSWORD: root
       DBNAME: 
+```
+
+## Referenciando outros arquivos
+- Para trabalhar com diversas rotinas é necessário separar elas em arquivdos diferentes e refenciar esses arquivos no final de cada arquivo lido.
+```yaml
+  docker:
+    needs: build
+    uses: ./.github/workflows/Docker.yml
+
 ```
