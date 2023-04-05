@@ -36,7 +36,7 @@ on:
 ## Criando um Dockerfile
 - Para criar um arquivo docker precisamos nos atentar para alguns pontos;
 - 1 - Qual imagem queremos utilizar;
-- 2 - Qual porta ele será exposto;
+- 2 - Qual porta ele será exposta;
 - 3 - Qual diretorio padrão ele irá criar;
 - 4 - O que será copiado para o container;
 - 5 - O comando que será executado depois que criar tudo.
@@ -66,9 +66,6 @@ ENV USER=root PASSWORD=root DBNAME=root
 ```
 
 ## Declarando variáveis de ambiente no workflow 
-- é necessário para podermos utilizar as variaveis no sistema automatizado 
-```yaml
- env:
       HOST: localhost
       PORT: 5432
       USER: root
