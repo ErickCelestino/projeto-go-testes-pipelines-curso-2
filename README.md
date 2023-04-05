@@ -89,7 +89,7 @@ ENV USER=root PASSWORD=root DBNAME=root
 - Para fazer login no docker hub é necessário criar um conta e passar o usuario e a senha.
 - É uma boa pratica de segurança criar um secret passando sua senha ou token do docker hub para não mostrar aos outros usuários suas informações pessoais.
 
-```docker
+```yaml
 name: Docker
 
 on:
@@ -114,4 +114,26 @@ jobs:
     # Password or personal access token used to log against the Docker registry
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
+```
+---
+## Criando um artefato no workflow
+- É preciso criar um artefato para que os dados de um arquivo passem para o outro.
+```yaml
+ - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+    # Artifact name
+        name: api_em_go
+    # A file, directory or wildcard pattern that describes what to upload
+        path: main
+```
+---
+## Baixando o artefato em outro arquivo
+- Para utilizar os dados do artefato anteriormente criado é necessário baixar ele no outro arquivo que está sendo utilizado
+```yaml
+ - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
+      with:
+    # Artifact name
+        name: api_em_go
 ```
